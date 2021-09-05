@@ -44,5 +44,39 @@ namespace LeapYear.tests
             
             Assert.Equal("yay", output);
         }
+        [Fact]
+        public void Main_IsLeapYeay_User_Input_Is_Before_1582 ()
+        {
+            var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            var input = new StringReader("1400");
+            Console.SetIn(input);
+            
+            Program.Main(new string[0]);
+
+            var output = writer.GetStringBuilder().ToString().Trim();
+
+            
+            Assert.Equal("Please enter a value above 1582", output);
+        }
+
+        [Fact]
+        public void Main_IsLeapYeay_User_Input_Is_Not_Integer()
+        {
+            var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            var input = new StringReader("hello");
+            Console.SetIn(input);
+            
+            Program.Main(new string[0]);
+
+            var output = writer.GetStringBuilder().ToString().Trim();
+
+            
+            Assert.Equal("Years are numerical...", output);
+        }
+        
     }
 }
