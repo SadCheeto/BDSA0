@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace LeapYear
 {
@@ -6,7 +7,9 @@ namespace LeapYear
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var userInput = Console.ReadLine().Trim();
+            if (isLeapYear(Convert.ToInt32(userInput))) Console.WriteLine("yay");
+            else Console.WriteLine("nay");
         }
         public static bool isLeapYear(int year) 
         {

@@ -7,20 +7,6 @@ namespace LeapYear.tests
     public class UnitTest1
     {
         [Fact]
-        public void Main_print_Hello_World()
-        {
-            var writer = new StringWriter();
-            Console.SetOut(writer);
-
-            Program.Main(new string[0]);
-
-            var output = writer.GetStringBuilder().ToString().Trim();
-            
-            
-            Assert.Equal("Hello World!", output);
-        }
-
-        [Fact]
         public void IsLeapYear_Divisible_by_4_and_400_returns_true() 
         {
             Assert.True(Program.isLeapYear(2000));
@@ -41,6 +27,22 @@ namespace LeapYear.tests
         {     
             Assert.False(Program.isLeapYear(1937));
             Assert.False(Program.isLeapYear(1834));
+        }
+        [Fact]
+        public void Main_IsLeapYeay_User_Input_returns_true()
+        {
+            var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            var input = new StringReader("2000");
+            Console.SetIn(input);
+            
+            Program.Main(new string[0]);
+
+            var output = writer.GetStringBuilder().ToString().Trim();
+
+            
+            Assert.Equal("yay", output);
         }
     }
 }
